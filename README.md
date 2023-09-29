@@ -1,22 +1,40 @@
 # LA-GEM
-Local Ancestry based Gene Expression Models (LA-GEM)
+LA-GEM: Local Ancestry Guided Expression Modeling
+Description
 
-This is an extension of PredixCan gene expression prediction framework o incorporate loci-specific inferred Local Ancestry (LA) into the prediction
-model. We train a linear model per gene to map genotype to GE levels.
-For each model, we generate 3 sets of predictors: dosage data for cis-SNPs, LA data for the respective loci, and
-interaction terms consisting of the product of dosage and LA data for each locus.
+LA-GEM is a specialized computational model developed for the purpose of gene expression prediction. It innovatively integrates SNP-based Local Ancestry (LA) information with cis-regional genetic variants. This approach creates a powerful and comprehensive prediction tool suitable for applications in genomics and bioinformatics.
+Key Feature
 
-To Run Train LA-GEM on another data from another tissue, you need to use the PrediXcan model training code (https://github.com/hakyimlab/PredictDB_Pipeline_GTEx_v7) and replace their "gtex_v7_nested_cv_elnet.R" file
-with the modified version available in this LA-GEM repository. You'll also need to run RFMix (https://www.dropbox.com/s/cmq4saduh9gozi9/RFMix_v1.5.4.zip) on your genotype data to infer Local Ancestry (LA) for all of your variants.
+    SNP-Based Local Ancestry Integration: Employs single-nucleotide polymorphism (SNP)-based local ancestry data as a distinct set of predictors for gene expression prediction.
 
-Steps To run:
+Prerequisites
 
-1- Make local ancestry Predictors
-  - Run "Make_LocalAncestry_Predictors.R" and make sure to set the flag to run the function that check flipped alleles "check_flipped_alleles.R".
+    Python 3.x
+    R
+    RFMix v 1.5.4
+    Other domain-specific libraries
 
-2- Format LA into LA-GEM acceptable format
-  - Run "format_RFMix_Output_To_LA.R" to change the format of the RFMix output. RFMix infers LA for both alleles of each variants. This formatting function counts the number of alleles that has African Ancestry. 
+Use-Cases
 
-3- Train the LA-GEM Model
-  - Run PrediXcan training pipeline but using "gtex_v7_nested_cv_elnet.R" provided in La-GEM Repository.
+    Genomic medicine
+    Ancestral mapping
+    Genetic research
 
+Getting Started
+
+To utilize LA-GEM effectively, you must have calculated SNP-based local ancestry using RFMix v 1.5.4. Below are the steps to run LA-GEM:
+Steps To Run LA-GEM
+
+    Make Local Ancestry Predictors
+        Execute Make_LocalAncestry_Predictors.R and set the flag to run the function that checks flipped alleles, check_flipped_alleles.R.
+
+    Format LA into LA-GEM Acceptable Format
+        Run format_RFMix_Output_To_LA.R to modify the output format from RFMix. RFMix infers LA for both alleles of each variant. This formatting function tallies the number of alleles that have African Ancestry.
+
+    Train the LA-GEM Model
+        Execute the PrediXcan training pipeline but use the modified gtex_v7_nested_cv_elnet.R file provided in the LA-GEM repository.
+
+Additional Resources
+
+    PrediXcan model training code
+    RFMix v 1.5.4
